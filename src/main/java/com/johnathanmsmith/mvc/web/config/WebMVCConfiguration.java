@@ -29,10 +29,10 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.johnathanmsmith.mvc.web"})
-public class WebMVCConfig extends WebMvcConfigurerAdapter
+public class WebMVCConfiguration extends WebMvcConfigurerAdapter
 {
 
-    private static final Logger logger = LoggerFactory.getLogger(WebMVCConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(WebMVCConfiguration.class);
 
     @Bean
     public ViewResolver resolver()

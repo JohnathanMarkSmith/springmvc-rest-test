@@ -47,7 +47,14 @@ class IndexController
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getDefaultMovie(ModelMap model) {
+    public String getDisplayDefault(ModelMap model) {
+
+        /*
+
+            you did not enter a name so the default is going to run
+
+         */
+
 
         model.addAttribute("user", "Johnathan Mark Smith");
         return "list";

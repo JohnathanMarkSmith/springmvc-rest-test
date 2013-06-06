@@ -1,4 +1,4 @@
-import com.johnathanmsmith.mvc.web.config.WebMVCConfig;
+import com.johnathanmsmith.mvc.web.config.WebMVCConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {WebMVCConfig.class})
+@ContextConfiguration(classes = {WebMVCConfiguration.class})
 @WebAppConfiguration
 public class TestHelloWorldWeb
 {
