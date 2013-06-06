@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * <p/>
  * Comments:
  * <p/>
- * This is my basic controller for my web app.
+ * This is my basic controller for my web app but its going to return JSON data.
  */
 
 
@@ -30,17 +30,17 @@ class JSonController
 
 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public @ResponseBody User getName(@PathVariable String name, ModelMap model)
+    @ResponseBody
+    public User getName(@PathVariable String name, ModelMap model)
     {
 
         logger.debug("I am in the controller and got user name: " + name);
 
         /*
 
-            Simulate a successful lookup for 2 users:
+            Simulate a successful lookup for 2 users, this is where your real lookup code would go
 
          */
-
 
         if ("JohnathanMarkSmith".equals(name))
         {
@@ -55,14 +55,15 @@ class JSonController
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public @ResponseBody User getDisplayDefault(ModelMap model) {
+    @ResponseBody
+    public User getDisplayDefault(ModelMap model)
+    {
 
         /*
 
             you did not enter a name so the default is going to run
 
          */
-
 
         return new User("Johnathan Mark Smith", "JohnathanMarkSmith");
 

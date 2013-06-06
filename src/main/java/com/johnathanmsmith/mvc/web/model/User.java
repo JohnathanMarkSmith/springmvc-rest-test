@@ -6,8 +6,8 @@ package com.johnathanmsmith.mvc.web.model;
  * Email:  johnathansmith1969@gmail.com
  * <p/>
  * Comments:
- *
- *      This is the model that is going to be use for return the JSON data
+ * <p/>
+ * This is the model that is going to be use for return the JSON data
  */
 
 public class User

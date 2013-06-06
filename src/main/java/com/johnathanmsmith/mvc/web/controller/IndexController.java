@@ -47,7 +47,8 @@ class IndexController
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getDisplayDefault(ModelMap model) {
+    public String getDisplayDefault(ModelMap model)
+    {
 
         /*
 
