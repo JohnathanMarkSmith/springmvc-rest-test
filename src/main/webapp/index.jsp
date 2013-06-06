@@ -17,11 +17,24 @@
 
 <p>This is a Example of Spring MVC REST using JavaConfig.</p>
 
+<h2>This Will Display a Web Page</h2>
+
 <p>If you want to see if the controller really works just click <a href="./ask/JohnathanMarkSmith">here</a> (REST call
     for JohnathanMarkSmith).</p>
 
 <p>If you want to see if the controller really works just click <a href="./ask/Regan">here</a> (REST call for Regan).
 </p>
+
+
+<h2>This Will Return JSON</h2>
+
+<p>If you want to see if the controller really works just click <a href="./json/JohnathanMarkSmith">here</a> (REST call
+    for JohnathanMarkSmith).</p>
+
+<p>If you want to see if the controller really works just click <a href="./json/Regan">here</a> (REST call for Regan).
+</p>
+
+
 
 <b><i><a href="http://www.JohnathanMarkSmith.com">http://www.JohnathanMarkSmith.com</a></i></b>
 </body>
