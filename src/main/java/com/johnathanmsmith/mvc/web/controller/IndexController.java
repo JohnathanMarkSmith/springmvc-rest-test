@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Email:  johnathansmith1969@gmail.com
  * <p/>
  * Comments:
- *
- *    This is my basic controller for my web app.
+ * <p/>
+ * This is my basic controller for my web app.
  */
 
 
@@ -27,8 +27,9 @@ class IndexController
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
 
-    @RequestMapping(value="/{name}", method = RequestMethod.GET)
-    public String getName(@PathVariable String name, ModelMap model) {
+    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
+    public String getName(@PathVariable String name, ModelMap model)
+    {
 
         logger.debug("I am in the controller and got user name: " + name);
 
@@ -40,6 +41,7 @@ class IndexController
          */
 
         model.addAttribute("user", name);
+
         return "helloworld";
 
     }

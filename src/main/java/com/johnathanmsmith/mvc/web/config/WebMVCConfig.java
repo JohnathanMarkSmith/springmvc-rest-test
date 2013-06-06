@@ -22,8 +22,8 @@ import java.util.Properties;
  * Email:  johnathansmith1969@gmail.com
  * <p/>
  * Comments:
- *
- *    This is a VERY basic Spring Config setup for a web apps
+ * <p/>
+ * This is a VERY basic Spring Config setup for a web apps
  */
 
 @Configuration
