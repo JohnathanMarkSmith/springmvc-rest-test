@@ -23,6 +23,6 @@
 <p>If you want to see if the controller really works just click <a href="./ask/Regan">here</a> (REST call for Regan).
 </p>
 
-<p><b><i><a href="http://www.JohnathanMarkSmith.com">http://www.JohnathanMarkSmith.com</a></i></b></p>
+<b><i><a href="http://www.JohnathanMarkSmith.com">http://www.JohnathanMarkSmith.com</a></i></b>
 </body>
 </html>

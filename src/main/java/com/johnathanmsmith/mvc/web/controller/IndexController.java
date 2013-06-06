@@ -57,7 +57,7 @@ class IndexController
 
 
         model.addAttribute("user", "Johnathan Mark Smith");
-        return "list";
+        return "helloworld";
 
     }
 }

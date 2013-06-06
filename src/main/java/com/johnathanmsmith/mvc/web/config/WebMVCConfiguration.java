@@ -38,7 +38,7 @@ public class WebMVCConfiguration extends WebMvcConfigurerAdapter
     public ViewResolver resolver()
     {
         UrlBasedViewResolver url = new UrlBasedViewResolver();
-        url.setPrefix("views/");
+        url.setPrefix("/views/");
         url.setViewClass(JstlView.class);
         url.setSuffix(".jsp");
         return url;

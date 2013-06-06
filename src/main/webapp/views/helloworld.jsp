@@ -9,6 +9,10 @@
     h2 {
         font-family: 'Finger Paint', cursive;
     }
+
+    p {
+        font-family: 'Finger Paint', cursive;
+    }
 </style>
 
 <body>

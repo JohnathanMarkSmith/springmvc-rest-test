@@ -1,6 +1,6 @@
-### SpringMVC-helloworld-text
+### SpringMVC-rest-test
 
-This is a very basic example of using Spring MVC with JavaConfig to make a helloworld web apps and shows you how to test the web app with Spring Test Framework.
+This is a very basic example of using Spring MVC, REST and Spring Test Framework using Spring's Java configuration.
 
 The first part of this is to create a configuration class for the web app.  below is a sample of the configuration class we are going to use:
 
@@ -16,7 +16,7 @@ The first part of this is to create a configuration class for the web app.  belo
         public ViewResolver resolver()
         {
             UrlBasedViewResolver url = new UrlBasedViewResolver();
-            url.setPrefix("views/");
+            url.setPrefix("/views/");
             url.setViewClass(JstlView.class);
             url.setSuffix(".jsp");
             return url;
@@ -51,7 +51,7 @@ The first part of this is to create a configuration class for the web app.  belo
     }
 
 
-Next you have to setup the web.xml file to use the above configuration class, we do this but setting the contectConfigLocation to the package of the config class. see below:
+Next you have to setup the web.xml file to use the above configuration class, we do this but setting the contectConfigLocation to the package of the configuration class. see below:
 
     <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns="http://java.sun.com/xml/ns/javaee"
@@ -78,37 +78,49 @@ Next you have to setup the web.xml file to use the above configuration class, we
         </servlet-mapping>
     </web-app>
 
-Now lets setup a basic controller to display a page and my name on the page:
+Now lets setup a basic controller to display a page:
 
-    @Controller
+    Controller
     @RequestMapping("/ask")
     class IndexController
     {
 
         private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
-        @RequestMapping(method = RequestMethod.GET)
-        public ModelAndView displayRequestPage()
+
+        @RequestMapping(value = "/{name}", method = RequestMethod.GET)
+        public String getName(@PathVariable String name, ModelMap model)
         {
-            logger.debug("made it to controller");
+
+            logger.debug("I am in the controller and got user name: " + name);
 
             /*
 
-                Going to put my name in the model so it can be displayed on the page,
-                this is also going to be used in the test to see if my name did make it
-                to the page
+                Taking the REST call param 'name' and setting it to the user
+                attribute for the output screen
 
-            */
+             */
 
-            Map<String, Object> model = new HashMap<String, Object>();
-            model.put("user", "Johnathan Mark Smith");
+            model.addAttribute("user", name);
 
-            return new ModelAndView("helloworld", model);
-
+            return "helloworld";
 
         }
 
+        @RequestMapping(value = "/", method = RequestMethod.GET)
+        public String getDisplayDefault(ModelMap model) {
 
+            /*
+
+                you did not enter a name so the default is going to run
+
+             */
+
+
+            model.addAttribute("user", "Johnathan Mark Smith");
+            return "helloworld";
+
+        }
     }
 
 
@@ -118,59 +130,14 @@ Thats all it takes..
 
 To get this project and run it you will need to follow the following steps:
 
-    git clone  git@github.com:JohnathanMarkSmith/springmvc-helloworld.git
-    cd springmvc-helloworld/
+    git clone  git@github.com:JohnathanMarkSmith/springmvc-rest-test.git
+    cd springmvc-rest-test/
     mvn tomcat7:run
 
-Now open your web brower and goto http://127.0.0.1:8080/springmvc-helloworld/
-
-you can see the project run and play around with it for sometime but now lets look at the testing code.
-
-## Testing with Spring Test Framework
-
-We are not going to take a look at the test class I setup for test examples.
-
-You can see that the class is named "TestHelloWorldWeb" and is using the same configuration class as the main project, in the real would you would want to use a test class.
-
-
-    @RunWith(SpringJUnit4ClassRunner.class)
-    @ContextConfiguration(classes = {WebMVCConfig.class})
-    @WebAppConfiguration
-    public class TestHelloWorldWeb
-    {
-        @Autowired
-        private WebApplicationContext wac;
-
-        private MockMvc mockMvc;
-
-        @Before
-        public void setup() {
-            this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-        }
-
-        @Test
-        public void getFoo() throws Exception {
-            /*
-                This following code will do 'GET' to the web apps
-                and check that the return view is "helloworld"
-                and also that it has a attribute "user" to "Johnathan Mark Smith"
-
-             */
-            this.mockMvc.perform(get("/ask")
-                    .accept(MediaType.TEXT_HTML))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name("helloworld"))
-                    .andExpect(MockMvcResultMatchers.model().attribute("user", "Johnathan Mark Smith"))
-                    ;
-
-
-        }
-    }
-
-
-you can see in the above code that it will do a post and then test that my name is on the view helloworld. Its so easy
+Now open your web brower and goto http://127.0.0.1:8080/springmvc-rest-test/
 
 This its... Have run with it...
+
 
 If you have any questions or comments please email me at john@johnathanmarksmith.com or checkout my web site http://JohnathanMarkSmith.com
 
