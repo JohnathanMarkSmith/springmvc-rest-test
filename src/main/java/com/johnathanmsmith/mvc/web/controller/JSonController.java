@@ -1,5 +1,6 @@
 package com.johnathanmsmith.mvc.web.controller;
 
+import com.johnathanmsmith.mvc.web.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -26,27 +27,6 @@ class JSonController
 {
 
     private static final Logger logger = LoggerFactory.getLogger(JSonController.class);
-
-    private class User {
-        private String user;
-        private String name;
-
-        private User(String user, String name)
-        {
-            this.user = user;
-            this.name = name;
-        }
-
-        private String getUser()
-        {
-            return user;
-        }
-
-        private void setUser(String user)
-        {
-            this.user = user;
-        }
-    }
 
 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
