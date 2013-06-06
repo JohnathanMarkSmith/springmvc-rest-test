@@ -45,4 +45,12 @@ class IndexController
         return "helloworld";
 
     }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getDefaultMovie(ModelMap model) {
+
+        model.addAttribute("user", "Johnathan Mark Smith");
+        return "list";
+
+    }
 }
