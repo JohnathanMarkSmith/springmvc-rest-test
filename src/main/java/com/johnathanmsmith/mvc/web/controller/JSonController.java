@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Date:   6/5/13 / 7:58 AM
  * Author: Johnathan Mark Smith
- * Email:  johnathansmith1969@gmail.com
+ * Email:  john@johnathanmarksmith.com
  * <p/>
  * Comments:
  * <p/>

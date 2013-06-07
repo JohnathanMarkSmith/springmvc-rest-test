@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Date:   6/5/13 / 9:05 AM
  * Author: Johnathan Mark Smith
- * Email:  johnathansmith1969@gmail.com
+ * Email:  john@johnathanmarksmith.com
  * <p/>
  * Comments:
  * <p/>

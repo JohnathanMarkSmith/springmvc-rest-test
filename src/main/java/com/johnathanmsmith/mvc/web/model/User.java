@@ -3,7 +3,7 @@ package com.johnathanmsmith.mvc.web.model;
 /**
  * Date:   6/6/13 / 10:09 AM
  * Author: Johnathan Mark Smith
- * Email:  johnathansmith1969@gmail.com
+ * Email:  john@johnathanmarksmith.com
  * <p/>
  * Comments:
  * <p/>
