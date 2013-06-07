@@ -4,7 +4,7 @@ This is a very basic example of using Spring MVC, REST and Spring Test Framework
 
 The first part of this is to create a configuration class for the web app.  below is a sample of the configuration class we are going to use:
 
-    Configuration
+    @Configuration
     @EnableWebMvc
     @ComponentScan(basePackages = {"com.johnathanmsmith.mvc.web"})
     public class WebMVCConfig extends WebMvcConfigurerAdapter
