@@ -58,13 +58,13 @@ class JSonController
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
-    public User getDisplayDefault(ModelMap model)
+    public ResponseEntity<User> getDisplayDefault(ModelMap model)
     {
         /*
             you did not enter a name so the default is going to run
          */
+        return new ResponseEntity<User>(new User("Johnathan Mark Smith", "JohnathanMarkSmith"), HttpStatus.OK);
 
-        return new User("Johnathan Mark Smith", "JohnathanMarkSmith");
     }
 
     @ExceptionHandler

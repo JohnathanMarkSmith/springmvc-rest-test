@@ -12,6 +12,28 @@ package com.johnathanmsmith.mvc.web.error;
 
 public class ErrorHolder
 {
+    public ErrorHolder()
+    {
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ErrorHolder{" +
+                "errorMessage='" + errorMessage + '\'' +
+                '}';
+    }
+
+    public String getErrorMessage()
+    {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage)
+    {
+        this.errorMessage = errorMessage;
+    }
+
     public String errorMessage;
 
     public ErrorHolder(String errorMessage)
