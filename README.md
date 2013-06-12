@@ -156,7 +156,25 @@ Below you will see the Spring Test Framework and how to tell your web server wit
         }
 
         @Test
-        public void getFoo() throws Exception
+        public void getHTML() throws Exception
+        {
+            /*
+                This following code will do 'GET' to the web apps
+                and check that the return view is "helloworld"
+                and also that it has a attribute "user" to "JohnathanMarkSmith"
+
+             */
+            this.mockMvc.perform(get("/ask/JohnathanMarkSmith")
+                    .accept(MediaType.TEXT_HTML))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("helloworld"))
+                    .andExpect(MockMvcResultMatchers.model().attribute("user", "JohnathanMarkSmith"));
+
+
+        }
+
+        @Test
+        public void getJSON() throws Exception
         {
             /*
                 This following code will do 'GET' to the web apps
@@ -169,6 +187,7 @@ Below you will see the Spring Test Framework and how to tell your web server wit
                     .andExpect(jsonPath("$.user").value("Johnathan Mark Smith"));
         }
     }
+
 
 Thats all it takes..
 
