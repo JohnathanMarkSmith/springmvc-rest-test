@@ -80,35 +80,43 @@ Next you have to setup the web.xml file to use the above configuration class, we
 
 Now lets setup a basic controller to display a page:
 
-    Controller
-    @RequestMapping("/ask")
-    class IndexController
+    @Controller
+    @RequestMapping("/json")
+    class JSonController
     {
 
-        private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+        private static final Logger logger = LoggerFactory.getLogger(JSonController.class);
 
 
         @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-        public String getName(@PathVariable String name, ModelMap model)
+        @ResponseBody
+        public User getName(@PathVariable String name, ModelMap model)
         {
 
             logger.debug("I am in the controller and got user name: " + name);
 
             /*
 
-                Taking the REST call param 'name' and setting it to the user
-                attribute for the output screen
+                Simulate a successful lookup for 2 users, this is where your real lookup code would go
 
              */
 
-            model.addAttribute("user", name);
+            if ("JohnathanMarkSmith".equals(name))
+            {
+                return new User("Johnathan Mark Smith", name);
+            }
 
-            return "helloworld";
-
+            if ("Regan".equals(name))
+            {
+                return new User("Regan Smith", name);
+            }
+            return null;
         }
 
         @RequestMapping(value = "/", method = RequestMethod.GET)
-        public String getDisplayDefault(ModelMap model) {
+        @ResponseBody
+        public User getDisplayDefault(ModelMap model)
+        {
 
             /*
 
@@ -116,13 +124,46 @@ Now lets setup a basic controller to display a page:
 
              */
 
-
-            model.addAttribute("user", "Johnathan Mark Smith");
-            return "helloworld";
+            return new User("Johnathan Mark Smith", "JohnathanMarkSmith");
 
         }
     }
 
+
+## Testing Your Web Service
+
+Below you will see the Spring Test Framework and how to tell your web server with it
+
+    @RunWith(SpringJUnit4ClassRunner.class)
+    @ContextConfiguration(classes = {WebMVCConfiguration.class})
+    @WebAppConfiguration
+    public class TestHelloWorldWeb
+    {
+        @Autowired
+        private WebApplicationContext wac;
+
+        private MockMvc mockMvc;
+
+        @Before
+        public void setup()
+        {
+            this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        }
+
+        @Test
+        public void getFoo() throws Exception
+        {
+            /*
+                This following code will do 'GET' to the web apps
+                and also that it has a attribute "user" to "JohnathanMarkSmith"
+
+             */
+            this.mockMvc.perform(get("/json/JohnathanMarkSmith")
+                    .accept(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.user").value("Johnathan Mark Smith"));
+        }
+    }
 
 Thats all it takes..
 
