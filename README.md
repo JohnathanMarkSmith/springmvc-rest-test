@@ -90,7 +90,7 @@ Now lets setup a basic controller to display a page:
 
         @RequestMapping(value = "/{name}", method = RequestMethod.GET)
         @ResponseBody
-        public User getName(@PathVariable String name, ModelMap model)
+        public User getName(@PathVariable String name, ModelMap model) throws ResourceNotFoundException
         {
 
             logger.debug("I am in the controller and got user name: " + name);
@@ -110,25 +110,31 @@ Now lets setup a basic controller to display a page:
             {
                 return new User("Regan Smith", name);
             }
-            return null;
+
+            throw new ResourceNotFoundException("User Is Not Found");
         }
 
         @RequestMapping(value = "/", method = RequestMethod.GET)
         @ResponseBody
         public User getDisplayDefault(ModelMap model)
         {
-
             /*
-
                 you did not enter a name so the default is going to run
-
              */
 
             return new User("Johnathan Mark Smith", "JohnathanMarkSmith");
-
         }
-    }
 
+        @ExceptionHandler
+        public
+        @ResponseBody
+        ResponseEntity<ErrorHolder> handle(ResourceNotFoundException e)
+        {
+            logger.warn("The resource was not found", e);
+            return new ResponseEntity<ErrorHolder>(new ErrorHolder("The resource was not found"), HttpStatus.NOT_FOUND);
+        }
+
+    }
 
 ## Testing Your Web Service
 
