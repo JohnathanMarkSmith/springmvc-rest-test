@@ -15,9 +15,6 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 public class ErrorHolder
 {
-    public ErrorHolder()
-    {
-    }
 
     @JsonCreator
     public ErrorHolder(@JsonProperty("errorMessage") String errorMessage)
@@ -44,9 +41,4 @@ public class ErrorHolder
     }
 
     public String errorMessage;
-
-    public ErrorHolder(String errorMessage)
-    {
-        this.errorMessage = errorMessage;
-    }
 }
